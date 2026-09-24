@@ -44,7 +44,7 @@ jobs:
           ./packaging/build-deb.sh
           ./packaging/build-deb.sh --bundled
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: debian-packages
           path: dist/*.deb
@@ -64,7 +64,7 @@ jobs:
       - name: Build the installer (bundles Python, Qt and nmap)
         run: ./packaging/build-windows-installer.sh
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: windows-installer
           path: dist/NmapStudio-Setup.exe
@@ -88,7 +88,7 @@ jobs:
           python packaging/make-icons.py
           python -m PyInstaller --noconfirm --clean packaging/nmap-studio.spec
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: windows-exe
           path: dist/NmapStudio.exe
