@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<nmaprun scanner="nmap" args="nmap -sS -sV -O -A --traceroute -T4 10.10.0.0/16" start="1758531000" startstr="Tue Sep 22 09:30:00 2026" version="7.99">
+<scaninfo type="syn" protocol="tcp" numservices="1000" services="1-1000"/>
+<verbose level="1"/><debugging level="0"/>
+<host starttime="1758531001" endtime="1758531090"><status state="up" reason="echo-reply" reason_ttl="62"/>
+<address addr="10.10.5.1" addrtype="ipv4"/>
+<hostnames><hostname name="gw.lab.local" type="PTR"/></hostnames><ports>
+<extraports state="closed" count="996"><extrareasons reason="resets" count="996"/></extraports>
+<port protocol="tcp" portid="22"><state state="open" reason="syn-ack" reason_ttl="62"/><service name="ssh" product="OpenSSH" version="8.9p1" method="probed" conf="10"><cpe>cpe:/a:example:ssh</cpe></service>
+</port>
+<port protocol="tcp" portid="53"><state state="open" reason="syn-ack" reason_ttl="62"/><service name="domain" product="dnsmasq" version="2.86" method="probed" conf="10"><cpe>cpe:/a:example:domain</cpe></service>
+</port>
+<port protocol="tcp" portid="80"><state state="open" reason="syn-ack" reason_ttl="62"/><service name="http" product="nginx" version="1.22.1" method="probed" conf="10"><cpe>cpe:/a:example:http</cpe></service>
+<script id="http-title" output="Welcome to gw.lab.local"/>
+<script id="http-server-header" output="nginx 1.22.1"/>
+</port>
+<port protocol="tcp" portid="443"><state state="open" reason="syn-ack" reason_ttl="62"/><service name="https" product="nginx" version="1.22.1" method="probed" conf="10"><cpe>cpe:/a:example:https</cpe></service>
+</port>
+</ports>
+<os><osmatch name="Linux 4.15 - 5.8" accuracy="93"><osclass type="general purpose" vendor="Linux" osfamily="Linux" osgen="X"><cpe>cpe:/o:linux</cpe></osclass></osmatch><osmatch name="Linux 4.15 - 5.8 (variant)" accuracy="74"/></os>
+<uptime seconds="434002" lastboot="Mon Sep 14 12:00:00 2026"/>
+<distance value="1"/><tcpsequence index="196" difficulty="Good luck!"/><ipidsequence class="All zeros"/>
+<trace port="80" proto="tcp">
+<hop ttl="1" ipaddr="10.10.5.1" rtt="0.93"/>
+</trace>
+</host>
+<host starttime="1758531001" endtime="1758531090"><status state="up" reason="echo-reply" reason_ttl="62"/>
+<address addr="10.10.5.20" addrtype="ipv4"/>
+<hostnames><hostname name="dc01.lab.local" type="PTR"/></hostnames><ports>
+<extraports state="closed" count="990"><extrareasons reason="resets" count="990"/></extraports>
+<port protocol="tcp" portid="53"><state state="open" reason="syn-ack" reason_ttl="62"/><service name="domain" product="" version="" method="probed" conf="10"><cpe>cpe:/a:example:domain</cpe></service>
+</port>
+<port protocol="tcp" portid="88"><state state="open" reason="syn-ack" reason_ttl="62"/><service name="kerberos-sec" product="" version="" method="probed" conf="10"><cpe>cpe:/a:example:kerberos-sec</cpe></service>
+</port>
+<port protocol="tcp" portid="135"><state state="open" reason="syn-ack" reason_ttl="62"/><service name="msrpc" product="" version="" method="probed" conf="10"><cpe>cpe:/a:example:msrpc</cpe></service>
+</port>
+<port protocol="tcp" portid="139"><state state="open" reason="syn-ack" reason_ttl="62"/><service name="netbios-ssn" product="" version="" method="probed" conf="10"><cpe>cpe:/a:example:netbios-ssn</cpe></service>
+</port>
+<port protocol="tcp" portid="389"><state state="open" reason="syn-ack" reason_ttl="62"/><service name="ldap" product="" version="" method="probed" conf="10"><cpe>cpe:/a:example:ldap</cpe></service>
+</port>
+<port protocol="tcp" portid="445"><state state="open" reason="syn-ack" reason_ttl="62"/><service name="microsoft-ds" product="" version="" method="probed" conf="10"><cpe>cpe:/a:example:microsoft-ds</cpe></service>
+<script id="smb-os-discovery" output="OS: Microsoft Windows Server 2019&#xa;Computer name: dc01"/>
+</port>
+<port protocol="tcp" portid="464"><state state="open" reason="syn-ack" reason_ttl="62"/><service name="kpasswd5" product="" version="" method="probed" conf="10"><cpe>cpe:/a:example:kpasswd5</cpe></service>
+</port>
+<port protocol="tcp" portid="636"><state state="open" reason="syn-ack" reason_ttl="62"/><service name="ldapssl" product="" version="" method="probed" conf="10"><cpe>cpe:/a:example:ldapssl</cpe></service>
+</port>
+<port protocol="tcp" portid="3268"><state state="open" reason="syn-ack" reason_ttl="62"/><service name="globalcatLDAP" product="" version="" method="probed" conf="10"><cpe>cpe:/a:example:globalcatLDAP</cpe></service>
+</port>
+<port protocol="tcp" portid="3389"><state state="open" reason="syn-ack" reason_ttl="62"/><service name="ms-wbt-server" product="Microsoft Terminal Services" version="" method="probed" conf="10"><cpe>cpe:/a:example:ms-wbt-server</cpe></service>
+<script id="rdp-ntlm-info" output="Target_Name: LAB&#xa;NetBIOS_Domain_Name: LAB"/>
+</port>
+</ports>
+<os><osmatch name="Microsoft Windows Server 2019" accuracy="96"><osclass type="general purpose" vendor="Microsoft" osfamily="Microsoft" osgen="X"><cpe>cpe:/o:microsoft</cpe></osclass></osmatch><osmatch name="Microsoft Windows Server 2019 (variant)" accuracy="73"/></os>
+<uptime seconds="403452" lastboot="Mon Sep 14 12:00:00 2026"/>
+<distance value="2"/><tcpsequence index="197" difficulty="Good luck!"/><ipidsequence class="All zeros"/>
+<trace port="80" proto="tcp">
+<hop ttl="1" ipaddr="10.10.5.1" rtt="8.21"/>
+<hop ttl="2" ipaddr="10.10.5.20" rtt="2.17"/>
+</trace>
+<hostscript><script id="smb2-security-mode" output="Message signing enabled and required"/></hostscript>
+</host>
+<host starttime="1758531001" endtime="1758531090"><status state="up" reason="echo-reply" reason_ttl="62"/>
+<address addr="10.10.5.34" addrtype="ipv4"/>
+<hostnames><hostname name="web01.lab.local" type="PTR"/></hostnames><ports>
+<extraports state="closed" count="996"><extrareasons reason="resets" count="996"/></extraports>
+<port protocol="tcp" portid="22"><state state="open" reason="syn-ack" reason_ttl="62"/><service name="ssh" product="OpenSSH" version="8.2p1" method="probed" conf="10"><cpe>cpe:/a:example:ssh</cpe></service>
+</port>
+<port protocol="tcp" portid="80"><state state="open" reason="syn-ack" reason_ttl="62"/><service name="http" product="Apache httpd" version="2.4.41" method="probed" conf="10"><cpe>cpe:/a:example:http</cpe></service>
+<script id="http-title" output="Welcome to web01.lab.local"/>
+<script id="http-server-header" output="Apache httpd 2.4.41"/>
+</port>
+<port protocol="tcp" portid="443"><state state="open" reason="syn-ack" reason_ttl="62"/><service name="https" product="Apache httpd" version="2.4.41" method="probed" conf="10"><cpe>cpe:/a:example:https</cpe></service>
+</port>
+<port protocol="tcp" portid="3306"><state state="open" reason="syn-ack" reason_ttl="62"/><service name="mysql" product="MySQL" version="8.0.32" method="probed" conf="10"><cpe>cpe:/a:example:mysql</cpe></service>
+</port>
+</ports>
+<os><osmatch name="Linux 5.4" accuracy="89"><osclass type="general purpose" vendor="Linux" osfamily="Linux" osgen="X"><cpe>cpe:/o:linux</cpe></osclass></osmatch><osmatch name="Linux 5.4 (variant)" accuracy="83"/></os>
+<uptime seconds="458485" lastboot="Mon Sep 14 12:00:00 2026"/>
+<distance value="2"/><tcpsequence index="198" difficulty="Good luck!"/><ipidsequence class="All zeros"/>
+<trace port="80" proto="tcp">
+<hop ttl="1" ipaddr="10.10.5.1" rtt="2.39"/>
+<hop ttl="2" ipaddr="10.10.5.34" rtt="5.09"/>
+</trace>
+</host>
+<host starttime="1758531001" endtime="1758531090"><status state="up" reason="echo-reply" reason_ttl="62"/>
+<address addr="10.10.5.55" addrtype="ipv4"/>
+<hostnames><hostname name="printer.lab.local" type="PTR"/></hostnames><ports>
+<extraports state="closed" count="997"><extrareasons reason="resets" count="997"/></extraports>
+<port protocol="tcp" portid="80"><state state="open" reason="syn-ack" reason_ttl="62"/><service name="http" product="HP LaserJet" version="" method="probed" conf="10"><cpe>cpe:/a:example:http</cpe></service>
+<script id="http-title" output="Welcome to printer.lab.local"/>
+<script id="http-server-header" output="HP LaserJet"/>
+</port>
+<port protocol="tcp" portid="515"><state state="open" reason="syn-ack" reason_ttl="62"/><service name="printer" product="" version="" method="probed" conf="10"><cpe>cpe:/a:example:printer</cpe></service>
+</port>
+<port protocol="tcp" portid="9100"><state state="open" reason="syn-ack" reason_ttl="62"/><service name="jetdirect" product="" version="" method="probed" conf="10"><cpe>cpe:/a:example:jetdirect</cpe></service>
+</port>
+</ports>
+<os><osmatch name="HP embedded" accuracy="88"><osclass type="general purpose" vendor="HP" osfamily="HP" osgen="X"><cpe>cpe:/o:hp</cpe></osclass></osmatch><osmatch name="HP embedded (variant)" accuracy="73"/></os>
+<uptime seconds="254083" lastboot="Mon Sep 14 12:00:00 2026"/>
+<distance value="2"/><tcpsequence index="197" difficulty="Good luck!"/><ipidsequence class="All zeros"/>
+<trace port="80" proto="tcp">
+<hop ttl="1" ipaddr="10.10.5.1" rtt="5.32"/>
+<hop ttl="2" ipaddr="10.10.5.55" rtt="3.75"/>
+</trace>
+</host>
+<host starttime="1758531001" endtime="1758531090"><status state="up" reason="echo-reply" reason_ttl="62"/>
+<address addr="10.10.9.8" addrtype="ipv4"/>
+<hostnames><hostname name="build.ci.local" type="PTR"/></hostnames><ports>
+<extraports state="closed" count="997"><extrareasons reason="resets" count="997"/></extraports>
+<port protocol="tcp" portid="22"><state state="open" reason="syn-ack" reason_ttl="62"/><service name="ssh" product="OpenSSH" version="9.2p1" method="probed" conf="10"><cpe>cpe:/a:example:ssh</cpe></service>
+</port>
+<port protocol="tcp" portid="8080"><state state="open" reason="syn-ack" reason_ttl="62"/><service name="http-proxy" product="Jetty" version="10.0.13" method="probed" conf="10"><cpe>cpe:/a:example:http-proxy</cpe></service>
+</port>
+<port protocol="tcp" portid="50000"><state state="open" reason="syn-ack" reason_ttl="62"/><service name="http" product="Jenkins" version="2.387" method="probed" conf="10"><cpe>cpe:/a:example:http</cpe></service>
+<script id="http-title" output="Welcome to build.ci.local"/>
+<script id="http-server-header" output="Jenkins 2.387"/>
+</port>
+</ports>
+<os><osmatch name="Linux 5.15" accuracy="91"><osclass type="general purpose" vendor="Linux" osfamily="Linux" osgen="X"><cpe>cpe:/o:linux</cpe></osclass></osmatch><osmatch name="Linux 5.15 (variant)" accuracy="71"/></os>
+<uptime seconds="603705" lastboot="Mon Sep 14 12:00:00 2026"/>
+<distance value="3"/><tcpsequence index="207" difficulty="Good luck!"/><ipidsequence class="All zeros"/>
+<trace port="80" proto="tcp">
+<hop ttl="1" ipaddr="10.10.5.1" rtt="2.82"/>
+<hop ttl="2" ipaddr="10.10.9.2" rtt="1.56"/>
+<hop ttl="3" ipaddr="10.10.9.8" rtt="1.32"/>
+</trace>
+</host>
+<host starttime="1758531001" endtime="1758531090"><status state="up" reason="echo-reply" reason_ttl="62"/>
+<address addr="10.10.9.19" addrtype="ipv4"/>
+<hostnames><hostname name="nas.ci.local" type="PTR"/></hostnames><ports>
+<extraports state="closed" count="996"><extrareasons reason="resets" count="996"/></extraports>
+<port protocol="tcp" portid="21"><state state="open" reason="syn-ack" reason_ttl="62"/><service name="ftp" product="vsftpd" version="3.0.3" method="probed" conf="10"><cpe>cpe:/a:example:ftp</cpe></service>
+<script id="ftp-anon" output="Anonymous FTP login allowed (FTP code 230)"/>
+<script id="ftp-vsftpd-backdoor" output="VULNERABLE:&#xa;  vsFTPd version 2.3.4 backdoor&#xa;    State: LIKELY VULNERABLE&#xa;    IDs:  CVE:CVE-2011-2523"/>
+</port>
+<port protocol="tcp" portid="139"><state state="open" reason="syn-ack" reason_ttl="62"/><service name="netbios-ssn" product="Samba smbd" version="4.6.2" method="probed" conf="10"><cpe>cpe:/a:example:netbios-ssn</cpe></service>
+</port>
+<port protocol="tcp" portid="445"><state state="open" reason="syn-ack" reason_ttl="62"/><service name="netbios-ssn" product="Samba smbd" version="4.6.2" method="probed" conf="10"><cpe>cpe:/a:example:netbios-ssn</cpe></service>
+<script id="smb-os-discovery" output="OS: Linux 4.4&#xa;Computer name: nas"/>
+</port>
+<port protocol="tcp" portid="5000"><state state="open" reason="syn-ack" reason_ttl="62"/><service name="http" product="Synology DSM" version="" method="probed" conf="10"><cpe>cpe:/a:example:http</cpe></service>
+<script id="http-title" output="Welcome to nas.ci.local"/>
+<script id="http-server-header" output="Synology DSM"/>
+</port>
+</ports>
+<os><osmatch name="Linux 4.4" accuracy="92"><osclass type="general purpose" vendor="Linux" osfamily="Linux" osgen="X"><cpe>cpe:/o:linux</cpe></osclass></osmatch><osmatch name="Linux 4.4 (variant)" accuracy="75"/></os>
+<uptime seconds="128061" lastboot="Mon Sep 14 12:00:00 2026"/>
+<distance value="3"/><tcpsequence index="214" difficulty="Good luck!"/><ipidsequence class="All zeros"/>
+<trace port="80" proto="tcp">
+<hop ttl="1" ipaddr="10.10.5.1" rtt="3.54"/>
+<hop ttl="2" ipaddr="10.10.9.2" rtt="5.07"/>
+<hop ttl="3" ipaddr="10.10.9.19" rtt="0.85"/>
+</trace>
+<hostscript><script id="smb2-security-mode" output="Message signing enabled and required"/></hostscript>
+</host>
+<host><status state="down" reason="no-response"/><address addr="10.10.5.99" addrtype="ipv4"/></host>
+<runstats><finished time="1758531190" timestr="Tue Sep 22 09:33:10 2026" elapsed="190.42" summary="Nmap done at Tue Sep 22 09:33:10 2026; 7 IP addresses (6 hosts up) scanned in 190.42 seconds" exit="success"/><hosts up="6" down="1" total="7"/></runstats>
+</nmaprun>

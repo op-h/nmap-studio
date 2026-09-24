@@ -415,6 +415,10 @@ for the full licensing position on nmap, Npcap and Qt.
 
 ## 14. Testing
 
+> `docs/sample-scan.xml` is a finished 7-host scan you can open with
+> **Ctrl+O** — useful for working on the result views without running nmap.
+
+
 ```bash
 python3 selftest.py            # parsing, commands, views, exports, live process
 python3 selftest.py --scan     # plus a full scan of 127.0.0.1

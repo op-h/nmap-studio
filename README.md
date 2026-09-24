@@ -19,6 +19,8 @@ Every scan option, live results, and a countdown that tells you when it finishes
 
 <sub>A real scan — the ring fills, the countdown ticks down, results appear as nmap finds them.</sub>
 
+<sub>▶ **[Watch the 40-second tour](docs/demo.mp4)**  ·  no scanner needed: open `docs/sample-scan.xml` with <kbd>Ctrl</kbd>+<kbd>O</kbd> to explore a finished scan</sub>
+
 </div>
 
 ---
