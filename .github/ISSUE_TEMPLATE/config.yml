@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: nmap documentation
+    url: https://nmap.org/book/man.html
+    about: Questions about nmap itself — its flags, scan types and NSE scripts.

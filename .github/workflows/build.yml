@@ -1,0 +1,113 @@
+name: build
+
+on:
+  push:
+    branches: [main]
+    tags: ["v*"]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test:
+    name: self-test (Linux)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install nmap and PyQt6
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y nmap python3-pyqt6
+
+      - name: Run the self-test
+        env:
+          QT_QPA_PLATFORM: offscreen
+        run: python3 selftest.py
+
+  deb:
+    name: Debian package
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install build dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y nmap python3-pyqt6 python3-pil fakeroot
+          pip install pyinstaller
+
+      - name: Build both packages
+        env:
+          QT_QPA_PLATFORM: offscreen
+        run: |
+          ./packaging/build-deb.sh
+          ./packaging/build-deb.sh --bundled
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: debian-packages
+          path: dist/*.deb
+
+  windows-installer:
+    name: Windows installer
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install build dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y nsis p7zip-full python3-pyqt6 python3-pil
+
+      - name: Build the installer (bundles Python, Qt and nmap)
+        run: ./packaging/build-windows-installer.sh
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: windows-installer
+          path: dist/NmapStudio-Setup.exe
+
+  windows-exe:
+    name: Standalone Windows .exe
+    runs-on: windows-latest
+    needs: test
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install build dependencies
+        run: pip install PyQt6 pyinstaller pillow pywinpty
+
+      - name: Build
+        run: |
+          python packaging/make-icons.py
+          python -m PyInstaller --noconfirm --clean packaging/nmap-studio.spec
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: windows-exe
+          path: dist/NmapStudio.exe
+
+  release:
+    name: Attach to the release
+    runs-on: ubuntu-latest
+    needs: [deb, windows-installer, windows-exe]
+    if: startsWith(github.ref, 'refs/tags/v')
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+
+      - uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            artifacts/debian-packages/*.deb
+            artifacts/windows-installer/NmapStudio-Setup.exe
+            artifacts/windows-exe/NmapStudio.exe

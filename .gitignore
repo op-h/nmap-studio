@@ -1,0 +1,20 @@
+# build output
+build/
+dist/
+*.spec.bak
+
+# python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# editors
+.vscode/
+.idea/
+*.swp
+
+# os
+.DS_Store
+Thumbs.db

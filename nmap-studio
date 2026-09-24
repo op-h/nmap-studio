@@ -1,0 +1,25 @@
+#!/usr/bin/env python3
+"""Launcher for Nmap Studio. Works the same on Windows, Linux and macOS."""
+import os
+import sys
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+
+if sys.version_info < (3, 10):
+    sys.exit("Nmap Studio needs Python 3.10 or newer (found "
+             f"{sys.version_info.major}.{sys.version_info.minor}).")
+
+try:
+    from PyQt6.QtWidgets import QApplication            # noqa: F401
+except ImportError:
+    sys.exit(
+        "PyQt6 is not installed.\n\n"
+        "  Debian/Kali/Ubuntu:  sudo apt install python3-pyqt6\n"
+        "  Fedora:              sudo dnf install python3-pyqt6\n"
+        "  Arch:                sudo pacman -S python-pyqt6\n"
+        "  Windows/macOS/pip:   pip install PyQt6\n")
+
+from nmapgui.app import main                            # noqa: E402
+
+if __name__ == "__main__":
+    raise SystemExit(main())
